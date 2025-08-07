@@ -73,14 +73,13 @@ def load_toll_metadata():
         metadata = []
         for _, row in df.iterrows():
             car_rate = row["Car Rate Single"]
-            # Check if car_rate is NaN and convert to "N/A" if it is
             if pd.isna(car_rate):
                 car_rate = "N/A"
             metadata.append({
                 "name": row["Tollname"],
                 "lat": row["Latitude"],
                 "lon": row["Longitude"],
-                "car_rate_single": car_rate # Ensure this key is always present
+                "car_rate_single": car_rate 
             })
         return metadata
     except Exception as e:
@@ -288,7 +287,7 @@ def get_toll_booths(route_coords, step=10, max_requests=100):
             "lon": lon,
             "name": name,
             "metadata": matched_meta,
-            "car_rate_single": toll_price # This will now be a float or "N/A"
+            "car_rate_single": toll_price
         })
 
 
@@ -443,7 +442,7 @@ def main():
                     "Toll Name": booth["name"],
                     "Car Rate (Single Trip)": toll_price_display
                 })
-                total_toll_cost += current_booth_cost # Add to total only if it's a number
+                total_toll_cost += current_booth_cost
 
             st.dataframe(pd.DataFrame(toll_data))
 
