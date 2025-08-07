@@ -401,7 +401,7 @@ def main():
             st.error("Could not fetch coordinates for one or both cities.")
             return
 
-        client = openrouteservice.Client(key="5b3ce3597851110001cf62488d57cabe1f544954bfd264ee3dc2f9b9")
+        client = openrouteservice.Client(key="<your_client_key>")
         route_coords = get_route(client, [(coords1[1], coords1[0]), (coords2[1], coords2[0])])
         if not route_coords:
             st.error("Could not fetch route between cities.")
